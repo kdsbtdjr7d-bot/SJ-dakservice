@@ -64,3 +64,37 @@ if (quoteForm) {
  });
  window.addEventListener('pageshow', () => {submitButton.disabled = false;submitButton.innerHTML = submitLabel;validatePhotos();});
 }
+
+/* Eén dakkeuze toont zowel de bijbehorende diensten als projectcases. */
+const roofKinds = ['pannendaken', 'platte-daken'];
+function selectRoof(kind) {
+ if (!roofKinds.includes(kind)) kind = 'all';
+ document.querySelectorAll('[data-roof]').forEach(item => { item.hidden = kind !== 'all' && item.dataset.roof !== kind; });
+ document.querySelectorAll('[data-roof-filter]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.roofFilter === kind)));
+ document.querySelector('.roof-services').classList.toggle('is-filtered', kind !== 'all');
+ document.querySelector('#project-status').textContent = kind === 'all' ? 'Vier projecten: twee pannendaken en twee platte daken.' : kind === 'pannendaken' ? 'Twee projecten met pannendaken.' : 'Twee projecten met platte daken.';
+}
+document.querySelectorAll('[data-roof-select]').forEach(link => link.addEventListener('click', () => selectRoof(link.dataset.roofSelect)));
+document.querySelectorAll('[data-roof-filter]').forEach(button => button.addEventListener('click', () => selectRoof(button.dataset.roofFilter)));
+function applyRoofHash() { const kind = location.hash.slice(1); if (roofKinds.includes(kind)) selectRoof(kind); }
+window.addEventListener('hashchange', applyRoofHash);
+applyRoofHash();
+document.querySelectorAll('.compare-range').forEach(input => {
+ const update = () => {
+  input.parentElement.style.setProperty('--split', input.value + '%');
+  input.setAttribute('aria-valuetext', input.value + '% van de voorfoto zichtbaar');
+ };
+ input.addEventListener('input', update);
+ // Full-image pointer dragging, while native range keeps keyboard support.
+ let pointer = null;
+ function setFromPointer(event) {
+  const rect = input.getBoundingClientRect();
+  input.value = String(Math.round(Math.max(0, Math.min(100, (event.clientX - rect.left) / rect.width * 100))));
+  update();
+ }
+ input.addEventListener('pointerdown', event => { if (event.button !== 0) return; pointer = event.pointerId; input.setPointerCapture(pointer); input.focus({preventScroll:true}); setFromPointer(event); });
+ input.addEventListener('pointermove', event => { if (event.pointerId === pointer) setFromPointer(event); });
+ input.addEventListener('pointerup', () => { pointer = null; });
+ input.addEventListener('pointercancel', () => { pointer = null; });
+ update();
+});

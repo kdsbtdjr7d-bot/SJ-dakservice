@@ -104,3 +104,32 @@
 
 /* Toon de complete liggende voor-en-nafoto’s van de dakkapel. */
 [aria-labelledby="project-dakkapel-title"] .comparison-photo img{height:auto;aspect-ratio:16/9;object-fit:contain}
+
+/* Dakkeuze, projectcases en toegankelijke fotovergelijkingen. */
+.roof-choice{padding-bottom:32px}.roof-choice h2{font-size:clamp(38px,5vw,64px)}
+.roof-choice-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+.roof-card{display:flex;flex-direction:column;background:var(--ink);color:#fff;overflow:hidden;border-bottom:4px solid var(--red)}
+.roof-card>img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;transition:filter .2s}
+.roof-card:hover>img{filter:brightness(1.08)}.roof-card-copy{padding:30px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
+.roof-card h3{font:600 clamp(34px,4vw,48px)/1.1 'Barlow Condensed',Arial;margin:0 0 14px}.roof-card p{color:#dedfdf;margin-bottom:24px}.roof-card .button{margin-top:auto}
+.roof-filter{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 28px}.roof-filter button{padding:11px 18px;min-height:48px;background:transparent;border:1px solid #949795;color:var(--ink);font-size:16px}
+.roof-filter button[aria-pressed=true]{background:var(--red);border-color:var(--red);color:white}.project-status{color:var(--muted);font-size:14px;margin-top:-12px}
+.roof-services.is-filtered{grid-template-columns:minmax(0,1fr)}.project-jump{margin-top:18px!important;justify-content:flex-start!important;gap:18px}
+.case-comparison{margin:0;padding:0 24px}.compare-slider{position:relative;aspect-ratio:var(--ratio);max-height:650px;isolation:isolate;overflow:hidden;background:#dcdedb}
+.compare-slider img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;background:#dcdedb}
+.compare-slider .compare-before{clip-path:inset(0 calc(100% - var(--split)) 0 0)}
+.compare-label{position:absolute;top:16px;color:#fff;padding:7px 14px;font-weight:700;font-size:14px;pointer-events:none;z-index:2;background:var(--ink)}
+.compare-label.before{left:16px}.compare-label.after{right:16px;background:var(--red)}
+.compare-divider{position:absolute;top:0;bottom:0;left:var(--split);width:3px;background:white;box-shadow:0 0 4px #0008;transform:translateX(-50%);pointer-events:none}
+.compare-divider span{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:var(--red);color:#fff;border:3px solid white;font:600 28px/1 Arial;letter-spacing:3px;padding-left:3px;box-shadow:0 2px 8px #0005}
+.compare-range{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:ew-resize;touch-action:pan-y;z-index:3}
+.compare-slider:focus-within{outline:3px solid var(--red);outline-offset:4px}.case-comparison figcaption{font-size:14px;padding:12px 0;color:var(--muted)}.case-comparison figcaption span{display:block}
+.case-story{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;padding:28px 32px;margin:0}.case-story li{border-top:2px solid var(--red);padding-top:16px}.case-story h4{font-size:18px;margin:0 0 8px}.case-story p{font-size:16px;color:var(--muted);margin:0}.case-result{float:right;width:90px;height:120px;object-fit:cover;margin:0 0 12px 12px}
+[data-roof="platte-daken"] .compare-slider{max-width:760px;margin:auto}
+[aria-labelledby="project-smal-title"] .compare-slider{max-width:490px}
+[aria-labelledby="project-dakramen-title"] .comparison-photo img{height:400px;aspect-ratio:auto;object-fit:contain}
+.trust{background:#e9eae7;border-block:1px solid var(--line)}.trust h2{font-size:clamp(42px,5vw,64px);margin-bottom:40px}.trust-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px}.trust-grid svg{width:32px;height:32px;color:var(--red);margin-bottom:20px}.trust-grid h3{font-size:20px;margin-bottom:12px}.trust-grid p{color:var(--muted);margin:0}
+@media(max-width:900px){.trust-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.case-story{gap:18px;padding:24px}.roof-card-copy{padding:24px}}
+@media(max-width:680px){.roof-choice-grid{grid-template-columns:minmax(0,1fr)}.roof-choice{padding-top:48px}.roof-card>img{aspect-ratio:16/9}.roof-filter{gap:8px}.roof-filter button{padding:10px 12px;font-size:14px}.case-comparison{padding:0 12px}.compare-label{top:10px;padding:5px 9px}.compare-label.before{left:10px}.compare-label.after{right:10px}.case-story{grid-template-columns:minmax(0,1fr);gap:20px;padding:22px 18px}.trust-grid{gap:28px 20px}.trust-grid h3{font-size:18px}.trust-grid p{font-size:16px}[aria-labelledby="project-dakramen-title"] .comparison-photo img{height:240px}.case-comparison figcaption{line-height:1.6}.comparison-heading h3{overflow-wrap:break-word}}
+@media(max-width:380px){.trust-grid{grid-template-columns:1fr}.compare-label{font-size:12px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
