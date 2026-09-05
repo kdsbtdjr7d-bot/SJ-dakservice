@@ -5,7 +5,7 @@ nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
 document.addEventListener('keydown', event => {if(event.key === 'Escape' && nav.classList.contains('open')){menu.setAttribute('aria-expanded','false');nav.classList.remove('open');menu.focus();}});
 document.querySelector('#year').textContent = new Date().getFullYear();
 const galleries = {
- smal: {title:'Dakwerk naast zonnepanelen', photos:[['smal-dak-resultaat','Overzicht van de afgewerkte dakbedekking'],['smal-dak-werk','Dakbedekking tijdens de uitvoering'],['smal-dak-aanleg','De aanleg van de dakbedekking'],['smal-dak-detail','Detail van de dakbedekking'],['smal-dak-rand','Detail van de dakrand en aansluiting']]},
+ smal: {title:'Dakwerk naast zonnepanelen', photos:[['smal-dak-werk','Vóór: het oude dak bij de start van de werkzaamheden'],['smal-dak-aanleg','Vóór: de bestaande dakbedekking en verweerde dakranden'],['smal-dak-detail','Na: de nieuwe dakbedekking'],['smal-dak-rand','Na: de afgewerkte dakrand en aansluiting'],['smal-dak-resultaat','Eindresultaat: overzicht van het vernieuwde dak']]},
  plat: {title:'Van plat dak naar groendak', photos:[['plat-dak-voor','Bestaande dakbedekking'],['plat-dak-voor-overzicht','Overzicht van de bestaande dakbedekking'],['plat-dak-na','Vernieuwde dakbedekking'],['plat-dak-na-overzicht','Nieuwe dakbedekking vóór de groene afwerking'],['groendak','Eindresultaat: het dak met groene afwerking']]},
  groen: {title:'Groendak', photos:[['groendak','Dak met begroeiing op een uitbouw']]}
 };
