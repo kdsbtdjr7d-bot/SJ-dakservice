@@ -18,3 +18,47 @@ dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog
 function move(step){if(current+step>=0&&current+step<active.photos.length){current+=step;renderPhoto();}}
 document.querySelector('#prev-photo').addEventListener('click',()=>move(-1));document.querySelector('#next-photo').addEventListener('click',()=>move(1));
 dialog.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'){event.preventDefault();move(-1);}if(event.key==='ArrowRight'){event.preventDefault();move(1);}});
+
+/* Native verzending met fotobijlagen en controle vóór versturen. */
+const quoteForm = document.querySelector('#quote-form');
+if (quoteForm) {
+ const photoFields = Array.from(quoteForm.querySelectorAll('.photo-field'));
+ const photoInputs = photoFields.map(field => field.querySelector('input'));
+ const addPhoto = document.querySelector('#add-photo');
+ const uploadError = document.querySelector('#upload-error');
+ const submitButton = quoteForm.querySelector('[type="submit"]');
+ const submitLabel = submitButton.innerHTML;
+ function validatePhotos() {
+  let total = 0;
+  let error = '';
+  photoInputs.forEach(input => {
+   input.setCustomValidity('');
+   for (const file of input.files) {
+    total += file.size;
+    if (!/\.(jpe?g|png|webp)$/i.test(file.name) || (file.type && !['image/jpeg','image/png','image/webp'].includes(file.type))) error = 'Kies een JPG-, PNG- of WebP-foto. Andere bestanden kunt u via WhatsApp sturen.';
+   }
+  });
+  if (total > 10000000) error = 'De foto’s zijn samen groter dan 10 MB. Kies kleinere foto’s of stuur ze via WhatsApp.';
+  uploadError.textContent = error;
+  const firstSelected = photoInputs.find(input => input.files.length);
+  if (firstSelected && error) firstSelected.setCustomValidity(error);
+  return !error;
+ }
+ photoFields.forEach((field, index) => {field.hidden = index > 0 && !photoInputs[index].files.length;});
+ addPhoto.hidden = photoFields.every(field => !field.hidden);
+ addPhoto.addEventListener('click', () => {
+  const field = photoFields.find(item => item.hidden);
+  if (field) {field.hidden = false; field.querySelector('input').focus();}
+  addPhoto.hidden = photoFields.every(item => !item.hidden);
+ });
+ photoInputs.forEach(input => input.addEventListener('change', validatePhotos));
+ quoteForm.addEventListener('submit', event => {
+  if (!validatePhotos()) {event.preventDefault(); quoteForm.reportValidity(); return;}
+  submitButton.disabled = true;
+  submitButton.textContent = 'Aanvraag wordt verstuurd…';
+  // Bij een netwerkprobleem kan de bezoeker opnieuw proberen.
+  window.setTimeout(() => {submitButton.disabled = false;submitButton.innerHTML = submitLabel;}, 15000);
+ });
+ window.addEventListener('pageshow', () => {submitButton.disabled = false;submitButton.innerHTML = submitLabel;validatePhotos();});
+}
+
