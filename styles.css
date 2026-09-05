@@ -4,3 +4,33 @@
 @media(max-width:900px){.wrap{width:calc(100% - 48px)}nav{gap:18px}.brand>span{font-size:16px}.hero-inner{min-height:620px}.hero-copy{width:68%}.hero-photo{left:33%;opacity:.65}.photo-label{display:none}.about,.contact-grid{gap:50px}.featured .project-copy{padding:30px}.service-strip .wrap{flex-wrap:wrap;gap:15px}.contact aside{padding-left:30px}.actions{gap:20px}.section{padding-top:75px;padding-bottom:75px}}
 @media(max-width:680px){html{scroll-padding-top:90px}.wrap{width:calc(100% - 36px)}.topbar{padding:7px 0}.topbar .wrap>span{font-size:10px;letter-spacing:.7px}.topbar a{font-size:11px}.nav{min-height:78px}.brand strong{font-size:48px}.brand>span{font-size:16px}.brand small{font-size:8px}.menu-toggle{display:flex;gap:15px;align-items:center;background:none;border:1px solid var(--line);padding:8px 11px;font-size:14px}nav{display:none;position:absolute;left:0;right:0;top:100%;padding:20px;background:var(--paper);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch}nav.open{display:flex}.hero-inner{min-height:660px;align-items:flex-start}.hero-copy{width:100%;padding:48px 0 50px}.hero-photo{left:0;background-image:linear-gradient(90deg,#181b1ce8,#181b1c69),url('assets/smal-dak-resultaat.webp');opacity:1;background-position:center 55%}.hero h1{font-size:76px}.hero-copy>p:not(.eyebrow){max-width:340px;font-size:16px}.hero .eyebrow{font-size:11px}.hero-bottom{font-size:10px;letter-spacing:.6px;padding:18px 0}.hero-bottom span+span{display:none}.actions{align-items:flex-start;flex-direction:column;gap:24px}.service-strip .wrap{display:grid;grid-template-columns:1fr 1fr;font-size:12px;padding:20px 0;gap:12px}.section{padding-top:65px;padding-bottom:65px}.section-head{display:block;margin-bottom:32px}.section-head>p{margin-top:24px;font-size:15px}.eyebrow{font-size:11px;margin-bottom:18px}h2{font-size:54px}.services{grid-template-columns:1fr}.services article,.services article+article{padding:26px 0;border-left:0;border-bottom:1px solid var(--line)}.services article:last-child{border-bottom:0}.services h3{margin-top:15px}.featured,.project-grid,.about,.contact-grid{grid-template-columns:1fr}.featured{margin-bottom:22px}.featured .project-image{aspect-ratio:1.15}.featured .project-copy,.project-copy{padding:26px}.featured h3{font-size:38px}.project-grid{gap:22px}.about{gap:45px}.contact-grid{gap:45px}.contact aside{padding:35px 0 0;border-left:0;border-top:1px solid #ffffff40}.contact aside .number{display:none}.contact h2{font-size:65px}footer{padding-bottom:100px}footer .wrap{align-items:flex-start;flex-direction:column;gap:24px}.mobile-contact{display:grid;grid-template-columns:1fr 1fr;position:fixed;bottom:0;left:0;right:0;z-index:15;padding-bottom:env(safe-area-inset-bottom);background:var(--red);box-shadow:0 -3px 15px #0002}.mobile-contact a{text-align:center;padding:14px 5px;font-size:14px;font-weight:700;color:white}.mobile-contact a+a{background:#fff;color:var(--red)}dialog{padding:12px}.gallery-top h2{font-size:16px}.gallery-top button{font-size:12px;padding:7px}.gallery-stage{gap:5px}.gallery-stage img{width:calc(100% - 70px);height:60dvh}.gallery-stage button{width:30px}.gallery-top{gap:8px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+/* Projecten: de oude en nieuwe situatie direct naast elkaar. */
+.comparison-project{border:1px solid var(--line);margin-bottom:36px;overflow:hidden}
+.comparison-project:last-child{margin-bottom:0}
+.comparison-heading{padding:32px;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:32px}
+.comparison-heading .eyebrow{font-size:14px;letter-spacing:1.2px;margin-bottom:10px}
+.comparison-heading h3{font:600 clamp(28px,3.5vw,42px)/1.1 'Barlow Condensed',Arial,sans-serif;margin:0}
+.comparison-heading>p{color:var(--muted);font-size:16px;margin:0;max-width:450px}
+.comparison-pair{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;padding:0 20px}
+.comparison-pair figure{margin:0;min-width:0}
+.comparison-photo{position:relative;background:#dcdedb}
+.comparison-photo img{display:block;width:100%;height:clamp(230px,42vw,500px);object-fit:cover;object-position:center 65%}
+.comparison-label{position:absolute;left:16px;top:16px;background:var(--ink);color:#fff;padding:7px 17px;font-size:16px;font-weight:700;line-height:1.5}
+.comparison-label.after-label{background:var(--red)}
+.comparison-pair figcaption{padding:12px 0 16px;font-weight:600;font-size:16px}
+.comparison-footer{border-top:1px solid var(--line);padding:20px 32px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.comparison-footer>span{color:var(--muted);font-size:14px}
+.comparison-footer .button{border:0;font-size:14px;min-height:48px}
+@media(max-width:680px){
+.comparison-heading{display:block;padding:22px 18px}
+.comparison-heading .eyebrow{font-size:14px;letter-spacing:.6px}
+.comparison-heading>p{margin-top:14px}
+.comparison-pair{gap:8px;padding:0 10px}
+.comparison-label{left:8px;top:8px;padding:5px 12px;font-size:14px}
+.comparison-photo img{height:auto;aspect-ratio:3/4}
+.comparison-pair figcaption{font-size:14px;padding:10px 0 14px}
+.comparison-footer{padding:16px 18px;flex-wrap:wrap;gap:10px}
+.comparison-footer .button{width:100%;font-size:15px}
+.comparison-project{margin-bottom:24px}
+}
