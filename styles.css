@@ -69,3 +69,14 @@
 .form-trap,[hidden]{display:none!important}
 @media(max-width:900px){.contact-grid{grid-template-columns:minmax(0,1fr);gap:40px}.quote-card{max-width:720px;width:100%}}
 @media(max-width:480px){.quote-card{padding:24px 18px}.quote-card h3{font-size:36px}.quote-fields{grid-template-columns:minmax(0,1fr)}.quote-uploads{padding:14px 10px}.quote-submit{font-size:15px;padding:16px}}
+
+/* Vijf diensten, verdeeld over twee evenwichtige rijen. */
+.service-strip .wrap{flex-wrap:wrap;gap:14px 24px}
+@media(min-width:681px){
+.services{grid-template-columns:repeat(6,minmax(0,1fr))}
+.services article,.services article+article{grid-column:span 2;padding:32px;border-left:0;display:flex;flex-direction:column}
+.services article:nth-child(2),.services article:nth-child(3),.services article:nth-child(5){border-left:1px solid var(--line)}
+.services article:nth-child(n+4){grid-column:span 3;border-top:1px solid var(--line)}
+.services h3{margin-top:0}
+.services a{margin-top:auto;padding-top:12px;gap:16px}
+}
