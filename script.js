@@ -5,12 +5,15 @@ nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
 document.addEventListener('keydown', event => {if(event.key === 'Escape' && nav.classList.contains('open')){menu.setAttribute('aria-expanded','false');nav.classList.remove('open');menu.focus();}});
 document.querySelector('#year').textContent = new Date().getFullYear();
 const galleries = {
+ dakramen:{title:'Pannendak met dakramen',photos:[['pannen-dakramen-werk.svg','Tijdens: het dak nadat de oude pannen zijn verwijderd'],['pannen-dakramen-na.svg','Na: nieuwe donkere dakpannen rondom de dakramen']]},
+ dakkapel:{title:'Pannendak met dakkapel',photos:[['pannen-dakkapel-voor.svg','Vóór: het dak met de oude dakpannen'],['pannen-dakkapel-werk.svg','Tijdens: de dakpannen zijn verwijderd'],['pannen-dakkapel-opbouw.svg','Tijdens: de nieuwe opbouw van het dak'],['pannen-dakkapel-na-zij.svg','Na: het vernieuwde dakvlak'],['pannen-dakkapel-na.svg','Na: het pannendak rondom de dakkapel']]},
+ zink:{title:'Zinkwerk bij een pannendak',photos:[['zink-werk.svg','Tijdens: werkzaamheden aan de goot'],['zink-na.svg','Zinken goot bij het pannendak']]},
  smal: {title:'Dakwerk naast zonnepanelen', photos:[['smal-dak-werk','Vóór: het oude dak bij de start van de werkzaamheden'],['smal-dak-aanleg','Vóór: de bestaande dakbedekking en verweerde dakranden'],['smal-dak-detail','Na: de nieuwe dakbedekking'],['smal-dak-rand','Na: de afgewerkte dakrand en aansluiting'],['smal-dak-resultaat','Eindresultaat: overzicht van het vernieuwde dak']]},
  plat: {title:'Van plat dak naar groendak', photos:[['plat-dak-voor','Bestaande dakbedekking'],['plat-dak-voor-overzicht','Overzicht van de bestaande dakbedekking'],['plat-dak-na','Vernieuwde dakbedekking'],['plat-dak-na-overzicht','Nieuwe dakbedekking vóór de groene afwerking'],['groendak','Eindresultaat: het dak met groene afwerking']]},
  groen: {title:'Groendak', photos:[['groendak','Dak met begroeiing op een uitbouw']]}
 };
 const dialog = document.querySelector('#gallery'); let active; let current=0;
-function renderPhoto(){const [file,caption]=active.photos[current];const img=document.querySelector('#gallery-photo');img.src=`assets/${file}.webp`;img.alt=caption;document.querySelector('#gallery-title').textContent=active.title;document.querySelector('#gallery-caption').textContent=`${current+1} / ${active.photos.length} — ${caption}`;document.querySelector('#prev-photo').disabled=current===0;document.querySelector('#next-photo').disabled=current===active.photos.length-1;}
+function renderPhoto(){const [file,caption]=active.photos[current];const img=document.querySelector('#gallery-photo');img.src=`assets/${file.endsWith('.svg')?file:file+'.webp'}`;img.alt=caption;document.querySelector('#gallery-title').textContent=active.title;document.querySelector('#gallery-caption').textContent=`${current+1} / ${active.photos.length} — ${caption}`;document.querySelector('#prev-photo').disabled=current===0;document.querySelector('#next-photo').disabled=current===active.photos.length-1;}
 document.querySelectorAll('[data-gallery]').forEach(button=>button.addEventListener('click',()=>{active=galleries[button.dataset.gallery];current=0;renderPhoto();dialog.showModal();document.body.style.overflow='hidden';}));
 document.querySelector('#close-gallery').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('close',()=>document.body.style.overflow='');
@@ -61,4 +64,3 @@ if (quoteForm) {
  });
  window.addEventListener('pageshow', () => {submitButton.disabled = false;submitButton.innerHTML = submitLabel;validatePhotos();});
 }
-

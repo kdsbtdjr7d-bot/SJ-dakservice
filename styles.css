@@ -96,3 +96,11 @@
 .roof-links{gap:10px}
 .roof-links a{gap:12px;padding:10px 12px}
 }
+
+/* Pannendakproject in de openingsfoto. */
+.hero-photo{background-image:linear-gradient(90deg,#181b1c 0%,#181b1c30 48%,#181b1c00 100%),url('assets/pannen-dakramen-na.svg')}
+@media(max-width:680px){.hero-photo{background-image:linear-gradient(90deg,#181b1ce8,#181b1c69),url('assets/pannen-dakramen-na.svg')}}
+
+
+/* Toon de complete liggende voor-en-nafoto’s van de dakkapel. */
+[aria-labelledby="project-dakkapel-title"] .comparison-photo img{height:auto;aspect-ratio:16/9;object-fit:contain}
